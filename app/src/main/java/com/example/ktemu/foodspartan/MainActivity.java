@@ -90,21 +90,27 @@ public class MainActivity extends AppCompatActivity {
     private void jsonParse() {
 
         String url = "https://api.myjson.com/bins/kp9wz";
-
+        //I've created a variable called request that has 4 arguments.
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+                            //Created an array that will store JSON information.
                             JSONArray jsonArray = response.getJSONArray("employees");
 
+
+                            //The for loop will be displaying on the amount of JSON information.
                             for (int i = 0; i < jsonArray.length(); i++) {
+                                //Created an object called employee so i can access Information from getString.
                                 JSONObject employee = jsonArray.getJSONObject(i);
 
+                                //This will get the information relating to its object, e.g  age: 30.
                                 String firstName = employee.getString("firstname");
                                 int age = employee.getInt("age");
                                 String mail = employee.getString("mail");
 
+                                //this is kinda like toString, it will print out the information in a for loop.
                                 mTextViewer.append(firstName + ", " + String.valueOf(age) + ", " + mail + "\n\n");
                             }
                         } catch (JSONException e) {
@@ -118,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //this will execute the request that i have created at the top.
         mQueue.add(request);
     }
 
