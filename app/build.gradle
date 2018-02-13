@@ -38,4 +38,12 @@ dependencies {
 
 
 
+    //volley
+
+    ///this can be found in https://codinginflow.com/code-examples/android/volley-json-parsing
+    compile 'com.android.volley:volley:1.1.0'
+
+
+
+
 }
